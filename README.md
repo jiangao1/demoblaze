@@ -32,3 +32,10 @@ Run command from root of the folder and select either all tests or an individual
 - The keystrokes can be to fast for machine to type during username and password typing, and this can sometimes creates instability. I overwrite the type command in support/commands.js to give each keystrokes 100 ms wait time, and it looks better too when looking at the tests run.
 - Some of the service layer calls upon button clicks such as login, addtocart may need to wait until routes resolve. cy.intercept and cy.wait are used in places that are in need.
 - The add product to cart test has a test tear down step to remove the added product from the cart, so that if the test run again, the same pre-condition for the test is kept.
+
+**Run tests using docker:**
+pull the latest cypress image
+> docker pull cypress/included:7.2.0
+
+on windows powershell or linux terminal, go to the root of the project folder:
+> docker run -it -v ${PWD}:/e2e -w /e2e --entrypoint=cypress cypress/included:7.2.0 run
